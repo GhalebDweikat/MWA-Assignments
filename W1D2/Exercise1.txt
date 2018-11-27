@@ -1,0 +1,16 @@
+1. SetImmediate adds a function to the Check queue while SetTimeout adds it to the Timer queue. This proves helpful when the order
+of execution is important for asynchronous events.
+2. process.nextTick adds a function to the nextTick (priority) queue which has instant priority and will be executed on the next
+Event Loop tick. On the other hand, setImmediate adds the function to the Check queue which may take many more Event Loop ticks to
+get executed.
+3.
+- crypto: Module specific to encryption and hashing of data.
+- console: Module used to interact with the console, usually for debug purposes.
+- os: Module used to interact with the operating system
+- assert: Module that provides basic assertion test support
+- buffer: Module used to interact with binary data
+- dns: Module used for domain name server lookup
+- fs: Module used to interact with the file system
+- url: Module for parsing URLs
+- timers: Module for using timers
+- stream: Module for streaming data.
