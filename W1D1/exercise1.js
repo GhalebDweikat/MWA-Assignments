@@ -1,3 +1,6 @@
+const {Observable, from} = rxjs;
+const {map, reduce} = rxjs.operators;
+
 {
     'use strict';
 
@@ -14,8 +17,9 @@
         return words.join(' ');
     }
 
-    console.log( "This house is nice!".filterWords1(['house', 'nice']));
+    console.log( "1. This house is nice!".filterWords1(['house', 'nice']));
 
+    // Promise
 
     String.prototype.filterWords2 = function(blockedWords){
         let words = this.split(' ');
@@ -32,11 +36,49 @@
                 reject(e);
             }
         });
-        censorWords.then()
-
+        return censorWords;
     }
 
-    console.log( "This house is nice!".filterWords2(['house', 'nice']));
+    "2. This house is nice!".filterWords2(['house', 'nice'])
+        .then(d => console.log(d))
+        .catch(err => console.log(err));
 
+    // Await
+
+    const filter = async function(input, blockedWords){
+        let words = input.split(' ');
+
+        words = words.map(function(word){
+            if(blockedWords.indexOf(word) > -1)
+                return `***`;
+            else
+                return word;
+        });
+
+        return words.join(' ');
+    }
+
+
+    String.prototype.filterWords3 = async function(blockedWords){
+        //return await filter(this, blockedWords);
+        return await this.filterWords2(blockedWords);
+    }
+
+    "3. This house is nice!".filterWords3(['house', 'nice'])
+        .then(d => console.log(d))
+        .catch(err => console.log(err));
+
+    // Observable
+
+    String.prototype.filterWords4 = function(blockedWords){
+        let words = this.split(' ');
+        return from(words)
+            .pipe(
+                map(o => blockedWords.indexOf(o) > -1?`***`:o),
+                reduce((total, current) => {return `${total} ${current}`})
+            );
+    }
+
+    "4. This house is nice!".filterWords4(['house', 'nice']).subscribe( v => console.log(v));
 
 }
