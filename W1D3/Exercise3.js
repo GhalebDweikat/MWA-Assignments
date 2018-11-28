@@ -9,7 +9,7 @@ class Gym extends EventEmitter{
 
 
 const gm = new Gym();
-gm.on('go', ()={
+gm.on('go', ()=>{
     console.log("The Athlete is Working Out!");
 });
     
