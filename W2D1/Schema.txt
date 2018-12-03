@@ -1,0 +1,15 @@
+Books
+{
+    _id: objectId(),
+    title: '',
+    isbn: '',
+    author: '',
+    keywords: ['']
+}
+
+Students
+{
+    _id: objectId(),
+    name: '',
+    Books: [{isbn: '', date: new Date('')}]
+}
