@@ -1,0 +1,3 @@
+We need to create indexes that facilitate search:
+1- Students: {Books,date}. This index will help us find books that are due as it would be the most frequent query
+2- Books: {keywords, author}. This index will help students searching for a certain type of book by keywords or author.
