@@ -12,3 +12,6 @@
 11. db.resturants.find({name: {$regex: '.*ces'}}, {restaurant_id: 1, name: 1, district:1, cuisine: 1}).pretty()
 12. db.resturants.find({name: {$regex: '.*Reg.*'}}, {restaurant_id: 1, name: 1, district:1, cuisine: 1}).pretty()
 13. db.resturants.find({district: 'Bronx', cuisine: {$in: ['American', 'Chinese']}}).pretty()
+14. db.resturants.find({district: {$in: ['Bronx', 'Brooklyn', 'Queens', 'Staten Island']}}).pretty()
+15. db.resturants.find({district: {$nin: ['Bronx', 'Brooklyn', 'Queens', 'Staten Island']}}).pretty()
+16. db.resturants.find({'grades.score': {$lt: 10}}).pretty()
