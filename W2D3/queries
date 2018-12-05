@@ -1,0 +1,14 @@
+1. db.zips.aggregate([  {$match: {'state' : 'IA'}},
+                        {$group: {_id: '$state', zips: {$addToSet: '$_id'}}},
+                        {$project: {_id: 0, zips: 1}} ]);
+2. db.zips.aggregate([  {$project: {_id: 1, pop: 1, popMoreThan100: {$gte: ['$pop', 1000]}}},
+                        {$match: {'popMoreThan100': true}},
+                        {$project: {_id: 1, pop: 1}} ]);
+3. db.zips.aggregate([  {$group: {_id: {state: '$state', city: '$city'}, zipCnt: {$sum: 1}}},
+                        {$project: {_id: 1, moreThan1Zip: {$gte: ['zipCnt', 2]}}},
+                        {$match: {'moreThan1Zip': true}},
+                        {$project: {_id: 1}},
+                        {$sort: {'_id.state': 1, '_id.city': 1}} ]);
+4. db.zips.aggregate([  {$group: {_id: {state: '$state', city: '$city'}, population: {$sum: '$pop'}}},
+                        {$sort: {'_id.state': 1, 'population': 1}},
+                        {$group: {_id: '$_id.state', city: {$first: '$_id.city'}}}]);
