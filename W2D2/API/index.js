@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome!"});
 });
 
-require('./routes/note.routes.js')(app);
+require('./routes/locations.route.js')(app);
 
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");

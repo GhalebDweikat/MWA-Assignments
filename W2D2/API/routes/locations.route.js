@@ -5,9 +5,9 @@ module.exports = (app) => {
 
     app.get('/locations', locations.findAll);
 
-    app.get('/locations/:noteId', locations.findOne);
+    app.get('/locations/:id', locations.findOne);
 
-    app.put('/locations/:noteId', locations.update);
+    app.put('/locations/:id', locations.update);
 
-    app.delete('/locations/:noteId', locations.delete);
+    app.delete('/locations/:id', locations.delete);
 }
