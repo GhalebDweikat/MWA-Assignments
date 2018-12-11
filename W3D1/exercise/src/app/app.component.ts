@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'exercise';
-  ComponentCounterValue = 0;
+  ComponentCounterValue = 100;
   cntCng(e) {
     this.ComponentCounterValue = e;
     console.log(e);
